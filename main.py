@@ -1,4 +1,4 @@
-from display import *
+lfrom display import *
 from draw import *
 from parser import *
 from matrix import *
