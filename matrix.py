@@ -4,7 +4,7 @@ def make_bezier():
 	mmat = []
 	mmat.append([-1, 3, -3, 1])
 	mmat.append([3, -6, 3, 0])
-	mmat.append([3, 3, 0, 0])
+	mmat.append([-3, 3, 0, 0])
 	mmat.append([1, 0, 0, 0])
 	return mmat
 
@@ -21,7 +21,7 @@ def generate_curve_coefs( p1, p2, p3, p4, t ):
 	if (t == "bezier"):
 		mmat = make_bezier();
 	if (t == "hermite"):
-		mmat = make_bezier();
+		mmat = make_hermite();
 	matrix_mult(mmat, vals)
 	return vals
 

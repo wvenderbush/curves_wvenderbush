@@ -3,6 +3,7 @@ from matrix import *
 
 def cubic(vallist, t):
 	vallist = vallist[0]
+	#print vallist
 	value = vallist[0]*(t * t * t) + vallist[1]*(t * t) + vallist[2]*(t) + vallist[3]
 	return value
 
@@ -22,7 +23,7 @@ def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
 	if (curve_type == "bezier"):
 		resx = generate_curve_coefs( x0, x1, x2, x3, "bezier" )
 		resy = generate_curve_coefs( y0, y1, y2, y3, "bezier" )
-	if (curve_type == "hermite"):
+	elif (curve_type == "hermite"):
 		resx = generate_curve_coefs( x0, x1, x2, x3, "hermite" )
 		resy = generate_curve_coefs( y0, y1, y2, y3, "hermite" )
 	t = 0
@@ -31,12 +32,10 @@ def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
 		lasty = cubic(resy, t)
 		t += step
 		newx = cubic(resx, t)
-		newy = cubic(resx, t)
+		newy = cubic(resy, t)
 		add_edge(points, lastx, lasty, 0, newx, newy, 0)
 		
 		
-
-
 
 
 def draw_lines( matrix, screen, color ):
